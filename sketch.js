@@ -9,6 +9,61 @@ var backgroundImg,platform;
 var bird, slingshot;
 
 
+var a = 15; 
+
+var b = "Hi";
+
+var c = false;
+
+var d = null;
+
+var e;
+console.log(e);
+
+
+//arrays - multiple data - of the same type or of different type
+var arr1 = [15, "Hi", true, "Bye", 45];
+console.log(arr1);
+
+//Hi 
+
+console.log(arr1[1]);
+
+//multi- dimensional array 
+var arr2 = [[1,2], ["Hi", true], ["Bye", "Preeti"],["hello", null, "Why you here?", 550]];
+console.log(arr2);
+
+//true
+console.log(arr2[1][1]);
+
+
+//"Preeti"
+console.log(arr2[2][1]);
+
+//550
+console.log(arr2[3][3]);
+
+//2
+console.log(arr2[0][1]);
+
+//null
+console.log(arr2[3][1]);
+
+
+arr1.push("hey whats up ?");
+console.log(arr1);
+
+arr1.pop();
+console.log(arr1);
+
+
+var gameState = "onSling";
+
+
+
+
+
+
 function preload() {
     backgroundImg = loadImage("sprites/bg.png");
 }
@@ -69,12 +124,17 @@ function draw(){
 }
 
 function mouseDragged(){
-    Matter.Body.setPosition(bird.body, {x: mouseX , y: mouseY});
+    if(gameState != "launched"){
+        Matter.Body.setPosition(bird.body, {x: mouseX , y: mouseY});
+    }
+ 
 }
 
 
 function mouseReleased(){
+
     slingshot.fly();
+    gameState = "launched";
 }
 
 function keyPressed(){
